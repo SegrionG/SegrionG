@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdrienController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Bienvenue {{ controller_name }}! ✅</h1>
+
+    Voici:
+    <ul>
+        <li>Le controller : <code><a href="{{ '/home/etudrt/M4207CservgeraldesD2/src/Controller/AdrienController.php'|file_link(0) }}">src/Controller/AdrienController.php</a></code></li>
+        <li>Le fichier base : <code><a href="{{ '/home/etudrt/M4207CservgeraldesD2/templates/adrien/index.html.twig'|file_link(0) }}">templates/adrien/index.html.twig</a></code></li>
+<form><br>
+    <div>
+        <label for="Identifiant">Utilisateur:</label>
+        <input type="text" id="username" name="username">
+    </div>
+
+    <div>
+        <label for="pass">Mot de passe (8 caractères minimum):</label>
+        <input type="password" id="pass" name="password"
+            minlength="8" required>
+    </div>
+
+    <input type="submit" value="S'enregistrer">
+
+        </ul>
+    </div>
+</form>
+{% endblock %}
