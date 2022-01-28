@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdrienController extends AbstractController
 {
@@ -16,5 +17,17 @@ class AdrienController extends AbstractController
         return $this->render('adrien/index.html.twig', [
             'controller_name' => 'AdrienController',
         ]);
+    }
+
+    /**
+     * @Route("/formget", name="formget")
+     */
+    public function formget(Request $request): Response
+    {
+        $username = $request -> request -> get("username") ;
+        $password = $request -> request -> get("password") ;
+
+        return $this->render('adrien/formget.html.twig', [
+            'controller_name' => 'AdrienController','login' => $username, 'mdp' => $password, ]);  
     }
 }
