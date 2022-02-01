@@ -26,8 +26,13 @@ class AdrienController extends AbstractController
     {
         $username = $request -> request -> get("username") ;
         $password = $request -> request -> get("password") ;
-
+        if( ($username == "root") && ($password == "toor") ) {
+            $msg = 'Le mdp et le user sont correctes';
+        }
+        else {
+            $msg = 'Le mdp et le user ne sont pas correctes';
+        }
         return $this->render('adrien/formget.html.twig', [
-            'controller_name' => 'AdrienController','login' => $username, 'mdp' => $password, ]);  
+            'controller_name' => 'AdrienController','login' => $username, 'mdp' => $password , 'message' => $msg]);  
     }
 }
