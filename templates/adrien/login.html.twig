@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdrienController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<br><br>
+<div class="card text-white bg-secondary mb-3 col-6 mx-auto" style="max-width: 20rem" margin="center";>
+  <div class="card-header">Informations</div>
+  <div class="card-body">
+    <h4 class="card-title">Bienvenue : <strong>{{ login }}</strong> </h4>
+    <p class="card-text">Voici votre mot de passe : {{ mdp }} <br> <u>{{ message }}</u> </p>
+  </div>
+</div>
+
+{% endblock %}

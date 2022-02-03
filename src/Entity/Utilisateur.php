@@ -44,12 +44,12 @@ class Utilisateur
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getLogin(): ?string
     {
         return $this->Login;
     }
 
-    public function setNom(string $Login): self
+    public function setLogin(string $Login): self
     {
         $this->Login = $Login;
 
