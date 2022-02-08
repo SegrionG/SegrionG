@@ -81,6 +81,8 @@ class AdrienController extends AbstractController
         $cpassword = $request -> request -> get("Cpassword") ;
         if (strcmp ($cpassword,'')==0)
             $nusername=NULL;
+        elseif (strcmp ($cusername,'')==0)
+            $nusername=NULL;
         else {
             $nusername = new Utilisateur();
             $nusername->setLogin($cusername);
