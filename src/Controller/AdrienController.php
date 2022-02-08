@@ -63,4 +63,49 @@ class AdrienController extends AbstractController
             'controller_name' => 'AdrienController','login' => $username,'message' => $msg, 'loginV' => $usernameV, 'mdp' => $password]);  
         
     }
+     /**
+     * @Route("/makelogin", name="makelogin")
+     */
+    public function makelogin(Request $request, EntityManagerInterface $manager): Response
+    {
+        return $this->render('adrien/makelogin.html.twig', [
+            'controller_name' => 'AdrienController',
+        ]);
+    }
+        /**
+     * @Route("/clogin", name="clogin")
+     */
+    public function clogin(Request $request, EntityManagerInterface $manager): Response
+    {
+        $cusername = $request -> request -> get("Cusername") ;
+        $cpassword = $request -> request -> get("Cpassword") ;
+        if (strcmp ($cpassword,'')==0)
+            $nusername=NULL;
+        else {
+            $nusername = new Utilisateur();
+            $nusername->setLogin($cusername);
+            $nusername->setPassword($cpassword);
+            $manager->persist($nusername);
+            $manager->flush();
+        }
+
+        if($nusername==NULL){
+            $message = "Le compte n'a pas été créé, ERROR !";
+        }
+        else{
+          $message="Le compte a bien été crée.";
+        }
+
+        return $this->render('adrien/clogin.html.twig', [
+            'controller_name' => 'AdrienController','login' => $cusername, 'mdp' => $cpassword, 'message' => $message]);
+    }
+    /**
+     * @Route("/listelogin", name="listelogin")
+     */
+    public function listelogin(Request $request, EntityManagerInterface $manager): Response
+    {
+        $listelogin = $manager->getRepository(Utilisateur::class)->findAll();
+        return $this->render('adrien/listelogin.html.twig',[
+            'listelogin' => $listelogin ]); 
+    }
 }
