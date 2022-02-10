@@ -1,4 +1,4 @@
-{% extends 'baselogin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Hello AdrienController!{% endblock %}
 
@@ -7,7 +7,7 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+</head>
 <div class="example-wrapper">
     <h1>Bienvenue sur le projet du module M4207c! ✅</h1>
 
@@ -18,23 +18,29 @@
         <li>Lien github : <code><a href="https://github.com/SegrionG">Lien github</a></code></li>
         <li>Code de connexion de test :<br>
           <small>Login : Adrien<br>
-        Mot de passe : Test12<small></li>
-<br>
-<form method="post" action="/login">
-  <fieldset>
-  <legend>Connexion :</legend>
-    <div class="form-group">
-        <label for="username" class="form-label mt-4">Nom d'utilisateur :</label>
-        <input type="username" class="form-control" id="username" name="username" placeholder="Utilisateur">
-    </div>
-    <div class="form-group">
-      <label for="password" class="form-label mt-4">Mot de passe :</label>
-      <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe">
-    </div>
-    <div>
-        <br><button type="submit" class="btn btn-primary">Soumettre</button>
-    </div>
-  </fieldset>
+           Mot de passe : Test12<small></li>
+  <br>
+  <form method="post" action="/login">
+    <fieldset>
+    <legend>Connexion :</legend>
+      <div class="form-group">
+          <label for="username" class="form-label mt-4">Nom d'utilisateur :</label>
+          <input type="username" class="form-control" id="username" name="username" placeholder="Utilisateur">
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label mt-4">Mot de passe :</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe">
+      </div>
+      <div>
+          <br><button type="submit" class="btn btn-primary">Soumettre</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div>
+
+<form method="post" action="/logout">
+        <br><button type="submit" class="btn btn-primary">Déconnexion</button>
 </form>
 
 </div>
