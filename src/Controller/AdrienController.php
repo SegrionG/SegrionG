@@ -29,6 +29,8 @@ class AdrienController extends AbstractController
     public function formget(Request $request, EntityManagerInterface $manager, SessionInterface $session): Response
     {
         $profidd = $session -> get('numero');
+        $vuser = $session -> get('user');
+        $vmdp = $session -> get('mdp');
         $username = $request -> request -> get("username") ;
         $password = $request -> request -> get("password") ;
         if( ($username == "root") && ($password == "toor") ) {
@@ -41,7 +43,7 @@ class AdrienController extends AbstractController
             $msg = 'Le mdp et le user ne sont pas correctes';
         }
         return $this->render('adrien/formget.html.twig', [
-            'controller_name' => 'AdrienController','login' => $username, 'mdp' => $password , 'message' => $msg,'profidd' => $profidd]);  
+            'controller_name' => 'AdrienController', 'vuser' => $vuser, 'vmdp' => $vmdp,'login' => $username, 'mdp' => $password , 'message' => $msg,'profidd' => $profidd]);  
         
     }
     /**
@@ -56,20 +58,28 @@ class AdrienController extends AbstractController
         if ($usernameV==NULL){
             $msg = "Utilisateur inconnu";
             $profidd = "-1";
+            $vuser= "-1";
+            $vmdp= "-1";
         }
         elseif ($password == $usernameV -> getPassword() ){
             $msg = 'Le mdp et le user sont correctes';
             $profid = $usernameV->getId();
             $session -> set('numero', $profid);
+            $session -> set('user', $username);
+            $session -> set('mdp', $password);
             $profidd = $session -> get('numero');
+            $vuser = $session -> get('user');
+            $vmdp = $session -> get('mdp');
         }
         else {
             $msg = 'Le mdp  n\'est pas correct';
             $profidd = "-1";
+            $vuser= "-1";
+            $vmdp= "-1";
         }
 
         return $this->render('adrien/login.html.twig', [
-            'controller_name' => 'AdrienController','vs' => $profidd,'profidd' => $profidd,'login' => $username,'message' => $msg, 'loginV' => $usernameV, 'mdp' => $password]);  
+            'controller_name' => 'AdrienController', 'vuser' => $vuser, 'vmdp' => $vmdp, 'vs' => $profidd,'profidd' => $profidd,'login' => $username,'message' => $msg, 'loginV' => $usernameV, 'mdp' => $password]);  
         
     }
 
@@ -79,9 +89,9 @@ class AdrienController extends AbstractController
     public function logout(Request $request, EntityManagerInterface $manager, SessionInterface $session): Response
     {
             $session -> set('numero', -1);
+            $session -> set('user', -1);
+            $session -> set('mdp', -1);
             $session -> clear();
-
-
 
         return $this->RedirectToRoute('adrien');
         
