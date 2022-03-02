@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdrienController!{% endblock %}
+
+{% block body %}
+
+<br><br>
+<div class="example-wrapper">
+    <form method="post" enctype="multipart/form-data" action="/recupfile">
+    <fieldset>
+    <legend>Postez un fichier</legend>
+        <div class="form-group">
+            <label for="file" class="form-label mt-4">Fichier :</label>
+            <input type="file" class="form-control" name="file1" id="file1"> 
+        </div>
+            <br><button type="submit" class="btn btn-primary">Soumettre</button>
+        </div>
+    </fieldset>
+    </form>
+</div>
+{% endblock %}

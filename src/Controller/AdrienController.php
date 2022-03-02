@@ -83,7 +83,7 @@ class AdrienController extends AbstractController
         
     }
 
-/**
+    /**
      * @Route("/logout", name="logout")
      */
     public function logout(Request $request, EntityManagerInterface $manager, SessionInterface $session): Response
@@ -148,4 +148,33 @@ class AdrienController extends AbstractController
         return $this->render('adrien/listelogin.html.twig',[
             'listelogin' => $listelogin,'profidd' => $profidd ]); 
     }
+        /**
+     * @Route("/file2", name="file2")
+     */
+    public function file2(Request $request, EntityManagerInterface $manager, SessionInterface $session): Response
+    {
+        $profidd = $session -> get('numero');
+        $path = "/home/etudrt/M4207CservgeraldesD2/public/file21";
+        if(file_exists($path)) {}
+        else{
+        mkdir("file21");
+        }
+        return $this->render('adrien/file2.html.twig',[
+            'profidd' => $profidd, $_FILES, $path]); 
+    }
+            /**
+     * @Route("/recupfile", name="recupfile")
+     */
+    public function recupfile(Request $request, EntityManagerInterface $manager, SessionInterface $session): Response
+    {
+        $path = "/home/etudrt/M4207CservgeraldesD2/public/".basename($_FILES['file1']['name']);
+        $profidd = $session -> get('numero');
+        $_FILES['file1']['tmp_name'];
+        $_FILES['file1']['name'];
+        basename($_FILES['file1']['name']);
+        move_uploaded_file($_FILES['file1']['tmp_name'],$path);
+        return $this->render('adrien/recupfile.html.twig',[
+            'profidd' => $profidd, $_FILES]); 
+    }
+
 }
